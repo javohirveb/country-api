@@ -1,6 +1,7 @@
 let searchBtn = document.getElementById("search-btn")
 let countryInp = document.getElementById("country-inp")
-searchBtn.addEventListener("click", () => {
+
+const showInformation = () => {
     let countryName = countryInp.value
     let finalURL = `https://restcountries.com/v3.1/name/${countryName}?fullText=true`
     console.log(finalURL)
@@ -40,11 +41,21 @@ searchBtn.addEventListener("click", () => {
             </div>
         `
     })
-    .catch(() => {
-        if (countryName.lenght == 0) {
-            result.innerHTML = `<h3>The input field cannot be empty</h3>`
-        } else {
-            result.innerHTML = `<h3>Please enter a valid country name.</h3>`
-        }
-    })
+        .catch(() => {
+            if (countryName.lenght == 0) {
+                result.innerHTML = `<h3>The input field cannot be empty</h3>`
+            } else {
+                result.innerHTML = `<h3>Please enter a valid country name.</h3>`
+            }
+        })
+}
+
+searchBtn.addEventListener("click", () => {
+    showInformation()
+})
+
+document.addEventListener('keydown', (e) => {
+    if (e.key == "Enter") {
+        showInformation()
+    }
 })
