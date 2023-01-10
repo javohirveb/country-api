@@ -95,3 +95,10 @@ body {
     font-weight: 400;
     color: #ff465a;
 }
+
+@media only screen and (max-width: 576px) {
+    .search-wrapper {
+        flex-direction: column;
+        gap: 2em;
+    }
+}
